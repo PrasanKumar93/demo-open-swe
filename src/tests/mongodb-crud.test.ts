@@ -3,6 +3,13 @@ import { ObjectId } from "mongodb";
 import { z } from "zod";
 import { MongoCRUD } from "../mongodb/crud.js";
 import { MongoConnectionManager } from "../mongodb/connection.js";
+import type { 
+  CreateResult, 
+  FindResult, 
+  FindManyResult, 
+  UpdateResult as CrudUpdateResult, 
+  DeleteResult as CrudDeleteResult 
+} from "../mongodb/types.js";
 
 // Mock MongoDB with proper typing
 const mockCollection = {
@@ -625,4 +632,5 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
