@@ -116,6 +116,7 @@ export class MongoCRUD<T extends Record<string, any>> {
         _id: this.generateId(),
       } as T;
 
+      // @ts-ignore
       const result: InsertOneResult<T> = await this.collection.insertOne(documentToInsert);
       
       if (result.acknowledged) {
@@ -316,6 +317,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
