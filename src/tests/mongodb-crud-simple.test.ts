@@ -1,12 +1,10 @@
 import { describe, it, expect, beforeEach, jest } from "@jest/globals";
 import { ObjectId } from "mongodb";
 import { z } from "zod";
+// @ts-ignore
 import { MongoCRUD } from "../mongodb/crud.js";
+// @ts-ignore
 import { MongoConnectionManager } from "../mongodb/connection.js";
-import type { 
-  UpdateResult as CrudUpdateResult, 
-  DeleteResult as CrudDeleteResult 
-} from "../mongodb/types.js";
 
 // Test schema
 const TestSchema = z.object({
@@ -330,6 +328,7 @@ describe("MongoCRUD Unit Tests", () => {
     });
   });
 });
+
 
 
 
