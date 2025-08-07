@@ -209,7 +209,7 @@ export class MongoCRUD<T extends Record<string, any>> {
         }
       }
       
-      const result: UpdateResult = await this.collection.updateOne(
+      const result: MongoUpdateResult = await this.collection.updateOne(
         { _id: validatedId } as Filter<T>,
         update
       );
@@ -314,4 +314,5 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
