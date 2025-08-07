@@ -223,7 +223,7 @@ describe("MongoCRUD Unit Tests", () => {
       const testId = new ObjectId();
       const invalidUpdate = { $set: { email: "invalid-email" } };
 
-      const result = await crud.updateById(testId, invalidUpdate);
+      const result = await crud.updateById(testId, invalidUpdate) as CrudUpdateResult<TestDocument>;
 
       expect(result.success).toBe(false);
       expect(result.error).toContain("validation failed");
@@ -333,5 +333,6 @@ describe("MongoCRUD Unit Tests", () => {
     });
   });
 });
+
 
 
