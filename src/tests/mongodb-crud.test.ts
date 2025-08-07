@@ -43,9 +43,9 @@ const mockClient = {
 
 // Mock the connection manager
 const mockConnectionManager = {
-  getDb: jest.fn().mockReturnValue(mockDb) as jest.MockedFunction<any>,
-  getClient: jest.fn().mockReturnValue(mockClient) as jest.MockedFunction<any>,
-  isConnectionActive: jest.fn().mockReturnValue(true) as jest.MockedFunction<any>,
+  getDb: jest.fn().mockReturnValue(mockDb),
+  getClient: jest.fn().mockReturnValue(mockClient),
+  isConnectionActive: jest.fn().mockReturnValue(true),
 } as unknown as MongoConnectionManager;
 
 // Test schema
@@ -632,6 +632,7 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
 
 
