@@ -275,7 +275,7 @@ describe("MongoCRUD", () => {
 
     it("should find documents with custom filter and options", async () => {
       const filter = { age: { $gte: 25 } };
-      const options = { limit: 10, skip: 5, sort: { name: 1 } };
+      const options = { limit: 10, skip: 5, sort: { name: 1 as const } };
       const testDocuments = [
         { _id: new ObjectId(), name: "John", email: "john@example.com", age: 30 },
       ];
@@ -632,6 +632,7 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
 
 
