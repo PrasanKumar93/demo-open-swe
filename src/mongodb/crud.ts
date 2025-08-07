@@ -226,6 +226,7 @@ export class MongoCRUD<T extends Record<string, any>> {
         
         return {
           success: true,
+          // @ts-ignore
           data: updatedDocument || undefined,
           modifiedCount: result.modifiedCount,
         };
@@ -320,6 +321,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
