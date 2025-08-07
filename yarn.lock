@@ -1214,6 +1214,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/mongodb@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "@types/mongodb@npm:4.0.7"
+  dependencies:
+    mongodb: "*"
+  checksum: 10ebdfed5beaeb9354adcaded3ff31a0597eec96d665155bf029fdf81384534cc054ffd4f3a431911e55055cea8dcea6233b2265d6d90f45fe233fd59a31bd56
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 24.2.0
   resolution: "@types/node@npm:24.2.0"
@@ -4439,7 +4448,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb@npm:^6.18.0":
+"mongodb@npm:*, mongodb@npm:^6.18.0":
   version: 6.18.0
   resolution: "mongodb@npm:6.18.0"
   dependencies:
@@ -5711,6 +5720,7 @@ __metadata:
     "@jest/globals": ^29.7.0
     "@tsconfig/recommended": ^1.0.8
     "@types/jest": ^29.5.0
+    "@types/mongodb": ^4.0.7
     "@types/node": ^22.10.6
     dotenv: ^16.4.7
     eslint: ^9.19.0
