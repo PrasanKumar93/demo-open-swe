@@ -107,14 +107,14 @@ export class MongoCRUD<T extends Record<string, any>> {
 
   async create(data: Omit<T, '_id'>): Promise<CreateResult<T>> {
     try {
-      // Validate the input data
-      const validatedData = this.validateData(data);
-      
-      // Generate ID if not provided
+      // Generate ID first, then validate the complete document
       const documentToInsert = {
-        ...validatedData,
+        ...data,
         _id: this.generateId(),
       } as T;
+      
+      // Validate the complete document with ID
+      const validatedData = this.validateData(documentToInsert);
 
       // @ts-ignore
       const result: InsertOneResult<T> = await this.collection.insertOne(documentToInsert);
@@ -321,6 +321,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
