@@ -212,7 +212,7 @@ describe("MongoCRUD Unit Tests", () => {
       });
       mockCollection.findOne.mockResolvedValue(updatedDocument);
 
-      const result = await crud.updateById(testId, updateData);
+      const result = await crud.updateById(testId, updateData) as CrudUpdateResult<TestDocument>;
 
       expect(result.success).toBe(true);
       expect(result.data).toEqual(updatedDocument);
@@ -333,4 +333,5 @@ describe("MongoCRUD Unit Tests", () => {
     });
   });
 });
+
 
