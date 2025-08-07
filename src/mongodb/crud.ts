@@ -242,7 +242,7 @@ export class MongoCRUD<T extends Record<string, any>> {
   async deleteById(id: IdType): Promise<DeleteResult> {
     try {
       const validatedId = this.validateId(id);
-      const result: DeleteResult = await this.collection.deleteOne({ _id: validatedId } as Filter<T>);
+      const result: MongoDeleteResult = await this.collection.deleteOne({ _id: validatedId } as Filter<T>);
       
       if (result.acknowledged) {
         return {
@@ -314,5 +314,6 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
