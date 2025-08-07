@@ -4,41 +4,41 @@ import { z } from "zod";
 import { MongoCRUD } from "../mongodb/crud.js";
 import { MongoConnectionManager } from "../mongodb/connection.js";
 
-// Mock MongoDB
+// Mock MongoDB with proper typing
 const mockCollection = {
-  insertOne: jest.fn(),
-  findOne: jest.fn(),
-  find: jest.fn(),
-  updateOne: jest.fn(),
-  deleteOne: jest.fn(),
-  deleteMany: jest.fn(),
-  countDocuments: jest.fn(),
+  insertOne: jest.fn() as jest.MockedFunction<any>,
+  findOne: jest.fn() as jest.MockedFunction<any>,
+  find: jest.fn() as jest.MockedFunction<any>,
+  updateOne: jest.fn() as jest.MockedFunction<any>,
+  deleteOne: jest.fn() as jest.MockedFunction<any>,
+  deleteMany: jest.fn() as jest.MockedFunction<any>,
+  countDocuments: jest.fn() as jest.MockedFunction<any>,
 };
 
 const mockCursor = {
-  skip: jest.fn().mockReturnThis(),
-  limit: jest.fn().mockReturnThis(),
-  toArray: jest.fn(),
+  skip: jest.fn().mockReturnThis() as jest.MockedFunction<any>,
+  limit: jest.fn().mockReturnThis() as jest.MockedFunction<any>,
+  toArray: jest.fn() as jest.MockedFunction<any>,
 };
 
 const mockDb = {
-  collection: jest.fn().mockReturnValue(mockCollection),
+  collection: jest.fn().mockReturnValue(mockCollection) as jest.MockedFunction<any>,
   admin: jest.fn().mockReturnValue({
-    ping: jest.fn().mockResolvedValue({}),
-  }),
+    ping: jest.fn().mockResolvedValue({}) as jest.MockedFunction<any>,
+  }) as jest.MockedFunction<any>,
 };
 
 const mockClient = {
-  connect: jest.fn().mockResolvedValue(undefined),
-  close: jest.fn().mockResolvedValue(undefined),
-  db: jest.fn().mockReturnValue(mockDb),
+  connect: jest.fn().mockResolvedValue(undefined) as jest.MockedFunction<any>,
+  close: jest.fn().mockResolvedValue(undefined) as jest.MockedFunction<any>,
+  db: jest.fn().mockReturnValue(mockDb) as jest.MockedFunction<any>,
 };
 
 // Mock the connection manager
 const mockConnectionManager = {
-  getDb: jest.fn().mockReturnValue(mockDb),
-  getClient: jest.fn().mockReturnValue(mockClient),
-  isConnectionActive: jest.fn().mockReturnValue(true),
+  getDb: jest.fn().mockReturnValue(mockDb) as jest.MockedFunction<any>,
+  getClient: jest.fn().mockReturnValue(mockClient) as jest.MockedFunction<any>,
+  isConnectionActive: jest.fn().mockReturnValue(true) as jest.MockedFunction<any>,
 } as unknown as MongoConnectionManager;
 
 // Test schema
@@ -625,3 +625,4 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
