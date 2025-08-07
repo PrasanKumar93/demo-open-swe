@@ -336,9 +336,9 @@ describe("MongoCRUD", () => {
 
       const result = await crud.updateById(testId, updateData);
 
-      expect(result.success).toBe(true);
-      expect(result.data).toEqual(updatedDocument);
-      expect(result.modifiedCount).toBe(1);
+      expect((result as CrudUpdateResult<TestDocument>).success).toBe(true);
+      expect((result as CrudUpdateResult<TestDocument>).data).toEqual(updatedDocument);
+      expect((result as CrudUpdateResult<TestDocument>).modifiedCount).toBe(1);
       expect(mockCollection.updateOne).toHaveBeenCalledWith({ _id: testId }, updateData);
     });
 
@@ -632,6 +632,7 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
 
 
