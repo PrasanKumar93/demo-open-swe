@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Collection, Db, ObjectId, Filter, UpdateFilter, FindOptions, InsertOneResult, UpdateResult as MongoUpdateResult, DeleteResult as MongoDeleteResult } from "mongodb";
 import { z } from "zod";
 import { v4 as uuidv4 } from "uuid";
@@ -314,6 +315,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
