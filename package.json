@@ -20,6 +20,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "mongodb": "^6.18.0",
     "uuid": "^11.0.5",
     "zod": "^3.25.32"
   },
@@ -29,6 +30,7 @@
     "@jest/globals": "^29.7.0",
     "@tsconfig/recommended": "^1.0.8",
     "@types/jest": "^29.5.0",
+    "@types/mongodb": "^4.0.7",
     "@types/node": "^22.10.6",
     "dotenv": "^16.4.7",
     "eslint": "^9.19.0",
