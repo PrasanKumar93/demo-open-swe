@@ -117,7 +117,7 @@ export class MongoCRUD<T extends Record<string, any>> {
       const validatedData = this.validateData(documentToInsert);
 
       // @ts-ignore
-      const result: InsertOneResult<T> = await this.collection.insertOne(documentToInsert);
+      const result: InsertOneResult<T> = await this.collection.insertOne(validatedData);
       
       if (result.acknowledged) {
         return {
@@ -321,6 +321,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
