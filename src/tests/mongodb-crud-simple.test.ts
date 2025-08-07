@@ -3,6 +3,13 @@ import { ObjectId } from "mongodb";
 import { z } from "zod";
 import { MongoCRUD } from "../mongodb/crud.js";
 import { MongoConnectionManager } from "../mongodb/connection.js";
+import type { 
+  CreateResult, 
+  FindResult, 
+  FindManyResult, 
+  UpdateResult as CrudUpdateResult, 
+  DeleteResult as CrudDeleteResult 
+} from "../mongodb/types.js";
 
 // Test schema
 const TestSchema = z.object({
@@ -326,3 +333,4 @@ describe("MongoCRUD Unit Tests", () => {
     });
   });
 });
+
