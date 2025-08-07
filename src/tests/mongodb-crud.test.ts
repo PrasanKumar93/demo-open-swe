@@ -13,32 +13,32 @@ import type {
 
 // Mock MongoDB with proper typing
 const mockCollection = {
-  insertOne: jest.fn() as jest.MockedFunction<any>,
-  findOne: jest.fn() as jest.MockedFunction<any>,
-  find: jest.fn() as jest.MockedFunction<any>,
-  updateOne: jest.fn() as jest.MockedFunction<any>,
-  deleteOne: jest.fn() as jest.MockedFunction<any>,
-  deleteMany: jest.fn() as jest.MockedFunction<any>,
-  countDocuments: jest.fn() as jest.MockedFunction<any>,
+  insertOne: jest.fn(),
+  findOne: jest.fn(),
+  find: jest.fn(),
+  updateOne: jest.fn(),
+  deleteOne: jest.fn(),
+  deleteMany: jest.fn(),
+  countDocuments: jest.fn(),
 };
 
 const mockCursor = {
-  skip: jest.fn().mockReturnThis() as jest.MockedFunction<any>,
-  limit: jest.fn().mockReturnThis() as jest.MockedFunction<any>,
-  toArray: jest.fn() as jest.MockedFunction<any>,
+  skip: jest.fn().mockReturnThis(),
+  limit: jest.fn().mockReturnThis(),
+  toArray: jest.fn(),
 };
 
 const mockDb = {
-  collection: jest.fn().mockReturnValue(mockCollection) as jest.MockedFunction<any>,
+  collection: jest.fn().mockReturnValue(mockCollection),
   admin: jest.fn().mockReturnValue({
-    ping: jest.fn().mockResolvedValue({}) as jest.MockedFunction<any>,
-  }) as jest.MockedFunction<any>,
+    ping: jest.fn().mockResolvedValue({}),
+  }),
 };
 
 const mockClient = {
-  connect: jest.fn().mockResolvedValue(undefined) as jest.MockedFunction<any>,
-  close: jest.fn().mockResolvedValue(undefined) as jest.MockedFunction<any>,
-  db: jest.fn().mockReturnValue(mockDb) as jest.MockedFunction<any>,
+  connect: jest.fn().mockResolvedValue(void 0),
+  close: jest.fn().mockResolvedValue(void 0),
+  db: jest.fn().mockReturnValue(mockDb),
 };
 
 // Mock the connection manager
@@ -632,5 +632,6 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
 
