@@ -204,6 +204,7 @@ export class MongoCRUD<T extends Record<string, any>> {
       // If update contains $set, validate the data
       if (update.$set) {
         try {
+          // @ts-ignore
           this.schema.partial().parse(update.$set);
         } catch (error) {
           if (error instanceof z.ZodError) {
@@ -319,6 +320,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
