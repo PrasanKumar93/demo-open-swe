@@ -12,7 +12,6 @@ const UserSchema = z.object({
   email: z.string().email(),
   age: z.number().min(0).max(150),
   isActive: z.boolean().default(true),
-  createdAt: z.date().default(() => new Date()),
 });
 
 type User = z.infer<typeof UserSchema>;
@@ -451,3 +450,4 @@ describe("MongoDB CRUD Integration Tests", () => {
     });
   });
 });
+
