@@ -24,15 +24,38 @@ type TestDocument = z.infer<typeof TestSchema>;
 
 describe("MongoCRUD", () => {
   let crud: MongoCRUD<TestDocument>;
+  let mockCollection: any;
+  let mockCursor: any;
+  let mockDb: any;
+  let mockConnectionManager: any;
 
   beforeEach(() => {
-    // Reset all mocks
-    jest.clearAllMocks();
-    
-    // Setup default mock behaviors
-    mockCollection.find.mockReturnValue(mockCursor);
-    mockCursor.toArray.mockResolvedValue([]);
-    mockCollection.countDocuments.mockResolvedValue(0);
+    // Create fresh mocks for each test
+    mockCursor = {
+      skip: jest.fn().mockReturnThis(),
+      limit: jest.fn().mockReturnThis(),
+      toArray: jest.fn().mockResolvedValue([]),
+    };
+
+    mockCollection = {
+      insertOne: jest.fn(),
+      findOne: jest.fn(),
+      find: jest.fn().mockReturnValue(mockCursor),
+      updateOne: jest.fn(),
+      deleteOne: jest.fn(),
+      deleteMany: jest.fn(),
+      countDocuments: jest.fn().mockResolvedValue(0),
+    };
+
+    mockDb = {
+      collection: jest.fn().mockReturnValue(mockCollection),
+    };
+
+    mockConnectionManager = {
+      getDb: jest.fn().mockReturnValue(mockDb),
+      getClient: jest.fn(),
+      isConnectionActive: jest.fn().mockReturnValue(true),
+    } as unknown as MongoConnectionManager;
 
     // Create CRUD instance
     crud = new MongoCRUD(mockConnectionManager, TestSchema, {
@@ -42,7 +65,7 @@ describe("MongoCRUD", () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   describe("create", () => {
@@ -594,6 +617,7 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
 
 
