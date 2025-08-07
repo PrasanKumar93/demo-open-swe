@@ -219,7 +219,8 @@ describe("MongoCRUD Unit Tests", () => {
       const testId = new ObjectId();
       const invalidUpdate = { $set: { email: "invalid-email" } };
 
-      const result = await crud.updateById(testId, invalidUpdate) as unknown as CrudUpdateResult<TestDocument>;
+      // @ts-ignore
+      const result = await crud.updateById(testId, invalidUpdate);
 
       expect(result.success).toBe(false);
       expect(result.error).toContain("validation failed");
@@ -329,6 +330,7 @@ describe("MongoCRUD Unit Tests", () => {
     });
   });
 });
+
 
 
 
