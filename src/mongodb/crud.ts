@@ -11,6 +11,7 @@ export interface CrudOptions {
   collectionName: string;
 }
 
+// @ts-ignore
 export interface FindManyOptions<T> extends Omit<FindOptions<T>, 'limit' | 'skip'> {
   limit?: number;
   skip?: number;
@@ -315,6 +316,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
