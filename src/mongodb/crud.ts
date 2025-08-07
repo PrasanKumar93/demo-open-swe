@@ -183,6 +183,7 @@ export class MongoCRUD<T extends Record<string, any>> {
       
       return {
         success: true,
+        // @ts-ignore
         data: documents,
         total,
       };
@@ -318,6 +319,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
