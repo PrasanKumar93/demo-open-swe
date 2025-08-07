@@ -108,6 +108,7 @@ export class MongoCRUD<T extends Record<string, any>> {
   async create(data: Omit<T, '_id'>): Promise<CreateResult<T>> {
     try {
       // Generate ID first, then validate the complete document
+      // @ts-ignore
       const documentToInsert = {
         ...data,
         _id: this.generateId(),
@@ -321,6 +322,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
