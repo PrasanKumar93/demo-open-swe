@@ -253,7 +253,7 @@ describe("MongoCRUD Unit Tests", () => {
         deletedCount: 0,
       });
 
-      const result = await crud.deleteById(testId) as CrudDeleteResult;
+      const result = await crud.deleteById(testId) as unknown as CrudDeleteResult;
 
       expect(result.success).toBe(true);
       expect(result.deletedCount).toBe(0);
@@ -333,6 +333,7 @@ describe("MongoCRUD Unit Tests", () => {
     });
   });
 });
+
 
 
 
