@@ -3,50 +3,12 @@ import { ObjectId } from "mongodb";
 import { z } from "zod";
 import { MongoCRUD } from "../mongodb/crud.js";
 import { MongoConnectionManager } from "../mongodb/connection.js";
-import type { 
-  CreateResult, 
-  FindResult, 
-  FindManyResult, 
-  UpdateResult as CrudUpdateResult, 
-  DeleteResult as CrudDeleteResult 
-} from "../mongodb/types.js";
 
-// Mock MongoDB with proper typing
-const mockCollection = {
-  insertOne: jest.fn(),
-  findOne: jest.fn(),
-  find: jest.fn(),
-  updateOne: jest.fn(),
-  deleteOne: jest.fn(),
-  deleteMany: jest.fn(),
-  countDocuments: jest.fn(),
-};
-
-const mockCursor = {
-  skip: jest.fn().mockReturnThis(),
-  limit: jest.fn().mockReturnThis(),
-  toArray: jest.fn(),
-};
-
-const mockDb = {
-  collection: jest.fn().mockReturnValue(mockCollection),
-  admin: jest.fn().mockReturnValue({
-    ping: jest.fn().mockResolvedValue({}),
-  }),
-};
-
-const mockClient = {
-  connect: jest.fn().mockResolvedValue(void 0),
-  close: jest.fn().mockResolvedValue(void 0),
-  db: jest.fn().mockReturnValue(mockDb),
-};
-
-// Mock the connection manager
-const mockConnectionManager = {
-  getDb: jest.fn().mockReturnValue(mockDb),
-  getClient: jest.fn().mockReturnValue(mockClient),
-  isConnectionActive: jest.fn().mockReturnValue(true),
-} as unknown as MongoConnectionManager;
+// Mock MongoDB
+jest.mock("mongodb", () => ({
+  ObjectId: jest.requireActual("mongodb").ObjectId,
+  MongoClient: jest.fn(),
+}));
 
 // Test schema
 const TestSchema = z.object({
@@ -632,6 +594,7 @@ describe("MongoCRUD", () => {
     });
   });
 });
+
 
 
 
