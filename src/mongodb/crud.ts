@@ -267,7 +267,7 @@ export class MongoCRUD<T extends Record<string, any>> {
 
   async deleteMany(filter: Filter<T>): Promise<DeleteResult> {
     try {
-      const result: DeleteResult = await this.collection.deleteMany(filter);
+      const result: MongoDeleteResult = await this.collection.deleteMany(filter);
       
       if (result.acknowledged) {
         return {
@@ -314,6 +314,7 @@ export class MongoCRUD<T extends Record<string, any>> {
     return this.collection;
   }
 }
+
 
 
 
